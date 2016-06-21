@@ -5,7 +5,7 @@
   "author": "Liam Doherty",
   "dependencies": {},
   "scripts": {
-    "prepublish": "babel float2.js -o float2_dist.js --source-maps"
+    "prepublish": "babel float2.js -o float2_dist.js --source-maps inline"
   },
   "license": "MIT",
   "main": "float2_dist",
