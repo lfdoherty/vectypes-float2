@@ -12,46 +12,54 @@ const Epsilon = Number.EPSILON
 
 interface Float2Type {x: number, y: number}
 
+export function as(json: Float2Type) : Float2 {
+	return fromJson(json)
+}
+export function is(json: Float2Type) : boolean {
+	return isNumber(json.x) && isNumber(json.y)
+}
+
+export function fromJson(json: Float2Type) : Float2 {
+	assertNumber(json.x)
+	assertNumber(json.y)
+	return new Float2(json.x, json.y);
+}
+export function vec(x: number, y: number): Float2 {
+	return new Float2(x, y)
+}
+
+
+export function dot(a: Float2Type, b: Float2Type): number {
+	return (a.x * b.x) + (a.y * b.y)
+}
+export function dotFlat(ax: number, ay: number, bx: number, by: number): number {
+	return (ax * bx) + (ay * by)
+}
+export function distance(a: Float2Type, b: Float2Type): number {
+	const dx = a.x - b.x;
+	const dy = a.y - b.y;
+	return Math.sqrt((dx * dx) + (dy * dy));
+}
+export function distanceSquared(a: Float2Type, b: Float2Type): number {
+	const dx = a.x - b.x;
+	const dy = a.y - b.y;
+	return (dx * dx) + (dy * dy);
+}
+export function magSquaredFlat(x: number, y: number): number {
+	return (x * x) + (y * y);
+}
+export function magFlat(x: number, y: number): number {
+	return Math.sqrt((x * x) + (y * y));
+}
+export function mag(p: Float2Type): number {
+	return Math.sqrt((p.x * p.x) + (p.y * p.y));
+}
 export class Float2 {
 	constructor(x: number, y: number) {
 		this.x = x;
 		this.y = y;
 	}
-	static fromJson(json: Float2Type) : Float2 {
-		assertNumber(json.x)
-		assertNumber(json.y)
-		return new Float2(json.x, json.y);
-	}
-	static vec(x: number, y: number): Float2 {
-		return new Float2(x, y)
-	}
-
-
-	static dot(a: Float2Type, b: Float2Type): number {
-		return (a.x * b.x) + (a.y * b.y)
-	}
-	static dotFlat(ax: number, ay: number, bx: number, by: number): number {
-		return (ax * bx) + (ay * by)
-	}
-	static distance(a: Float2Type, b: Float2Type): number {
-		const dx = a.x - b.x;
-		const dy = a.y - b.y;
-		return Math.sqrt((dx * dx) + (dy * dy));
-	}
-	static distanceSquared(a: Float2Type, b: Float2Type): number {
-		const dx = a.x - b.x;
-		const dy = a.y - b.y;
-		return (dx * dx) + (dy * dy);
-	}
-	static magSquaredFlat(x: number, y: number): number {
-		return (x * x) + (y * y);
-	}
-	static magFlat(x: number, y: number): number {
-		return Math.sqrt((x * x) + (y * y));
-	}
-	static mag(p: Float2Type): number {
-		return Math.sqrt((p.x * p.x) + (p.y * p.y));
-	}
+	
 	
 	set(v: Float2Type): Float2 {
 		this.x = v.x

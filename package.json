@@ -1,16 +1,19 @@
 {
   "name": "vectypes-float2",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "author": "Liam Doherty",
   "dependencies": {},
   "scripts": {
-    "prepublish": "browserify float2.js -o float2_dist.js -t [ babelify --presets [ es2015 ] --plugins [ transform-class-properties transform-flow-strip-types ] ]"
+    "_prepublish": "browserify float2.js -o float2_dist.js --debug -t [ babelify --presets [ es2015 ] --plugins [ transform-class-properties transform-flow-strip-types ] ]",
+    "prepublish": "babel float2.js -o float2_dist.js --source-maps"
   },
   "license": "MIT",
   "main": "float2_dist",
   "devDependencies": {
+    "babel-cli": "^6.10.1",
     "babel-eslint": "^6.0.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-plugin-transform-flow-strip-types": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
