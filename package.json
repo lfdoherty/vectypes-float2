@@ -1,6 +1,6 @@
 {
   "name": "vectypes-float2",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "author": "Liam Doherty",
   "dependencies": {},
@@ -12,7 +12,6 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-eslint": "^6.0.4",
-    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-plugin-transform-flow-strip-types": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",

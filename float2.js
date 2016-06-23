@@ -24,6 +24,10 @@ export function fromJson(json: Float2Type) : Float2 {
 	assertNumber(json.y)
 	return new Float2(json.x, json.y);
 }
+export function fromArray(arr: number[]) : Float2 {
+	if(arr.length < 2) throw new Error('arr must have at least 2 elements')
+	return new Float2(arr[0], arr[1]);
+}
 export function vec(x: number, y: number): Float2 {
 	return new Float2(x, y)
 }
