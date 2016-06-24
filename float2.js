@@ -10,16 +10,24 @@ function assertNumber(n) : number {
 
 const Epsilon = Number.EPSILON
 
-interface Float2Type {x: number, y: number}
+export interface Duck {x: number, y: number}
 
-export function as(json: Float2Type) : Float2 {
+export const T = Float2;
+
+export function one(): Float2 {
+	return vec(1, 1);
+}
+export function zero(): Float2 {
+	return vec(0, 0);
+}
+export function as(json: Duck) : Float2 {
 	return fromJson(json)
 }
-export function is(json: Float2Type) : boolean {
+export function is(json: Duck) : boolean {
 	return isNumber(json.x) && isNumber(json.y)
 }
 
-export function fromJson(json: Float2Type) : Float2 {
+export function fromJson(json: Duck) : Float2 {
 	assertNumber(json.x)
 	assertNumber(json.y)
 	return new Float2(json.x, json.y);
@@ -33,18 +41,18 @@ export function vec(x: number, y: number): Float2 {
 }
 
 
-export function dot(a: Float2Type, b: Float2Type): number {
+export function dot(a: Duck, b: Duck): number {
 	return (a.x * b.x) + (a.y * b.y)
 }
 export function dotFlat(ax: number, ay: number, bx: number, by: number): number {
 	return (ax * bx) + (ay * by)
 }
-export function distance(a: Float2Type, b: Float2Type): number {
+export function distance(a: Duck, b: Duck): number {
 	const dx = a.x - b.x;
 	const dy = a.y - b.y;
 	return Math.sqrt((dx * dx) + (dy * dy));
 }
-export function distanceSquared(a: Float2Type, b: Float2Type): number {
+export function distanceSquared(a: Duck, b: Duck): number {
 	const dx = a.x - b.x;
 	const dy = a.y - b.y;
 	return (dx * dx) + (dy * dy);
@@ -55,7 +63,7 @@ export function magSquaredFlat(x: number, y: number): number {
 export function magFlat(x: number, y: number): number {
 	return Math.sqrt((x * x) + (y * y));
 }
-export function mag(p: Float2Type): number {
+export function mag(p: Duck): number {
 	return Math.sqrt((p.x * p.x) + (p.y * p.y));
 }
 export class Float2 {
@@ -65,7 +73,7 @@ export class Float2 {
 	}
 	
 	
-	set(v: Float2Type): Float2 {
+	set(v: Duck): Float2 {
 		this.x = v.x
 		this.y = v.y
 		return this
@@ -95,10 +103,10 @@ export class Float2 {
 	magSquared(): number {
 		return (this.x * this.x) + (this.y * this.y);
 	}
-	distance(p: Float2Type): number {
+	distance(p: Duck): number {
 		return Float2.distance(this, p)
 	}
-	distanceSquared(p: Float2Type) : number {
+	distanceSquared(p: Duck) : number {
 		return Float2.distanceSquared(this, p)
 	}
 	distanceFlat(x: number, y: number): number {
@@ -109,12 +117,12 @@ export class Float2 {
 		const dx = this.x - x, dy = this.y - y;
 		return (dx * dx) + (dy * dy)
 	}
-	min(v: Float2Type): Float2 {
+	min(v: Duck): Float2 {
 		this.x = Math.min(this.x, v.x)
 		this.y = Math.min(this.y, v.y)
 		return this
 	}
-	max(v: Float2Type): Float2 {
+	max(v: Duck): Float2 {
 		this.x = Math.max(this.x, v.x)
 		this.y = Math.max(this.y, v.y)
 		return this
@@ -142,17 +150,17 @@ export class Float2 {
 	area() {
 		return this.x * this.y
 	}
-	add(v: Float2Type): Float2 {
+	add(v: Duck): Float2 {
 		this.x += v.x
 		this.y += v.y
 		return this
 	}
-	addScaled(s: number, v: Float2Type): Float2 {
+	addScaled(s: number, v: Duck): Float2 {
 		this.x += s * v.x
 		this.y += s * v.y
 		return this
 	}
-	addMultiplied(s: Float2Type, v: Float2Type): Float2 {
+	addMultiplied(s: Duck, v: Duck): Float2 {
 		this.x += s.x * v.x
 		this.y += s.y * v.y
 		return this
@@ -167,7 +175,7 @@ export class Float2 {
 		this.y *= v
 		return this
 	}
-	multiply(v: Float2Type) : Float2 {
+	multiply(v: Duck) : Float2 {
 		this.x *= v.x;
 		this.y *= v.y;
 		return this
@@ -177,7 +185,7 @@ export class Float2 {
 		this.y *= y
 		return this
 	}
-	divide(v : Float2Type) : Float2 {
+	divide(v : Duck) : Float2 {
 		this.x /= v.x
 		this.y /= v.y
 		return this
@@ -234,7 +242,7 @@ export class Float2 {
 		if(!this.isPositive(this)) throw new Error(`not positive ${this}`)
 		return this
 	}
-	isLessThan(p: Float2Type): Float2 {
+	isLessThan(p: Duck): Float2 {
 		return this.x < p.x && this.y < p.y;
 	}
 	isInt(): boolean {
@@ -251,13 +259,13 @@ export class Float2 {
 		if(!this.isUnit()) throw new Error(`not a unit vector: ${this}`)
 		return this
 	}
-	isGreaterThan(p : Float2Type) : boolean {
+	isGreaterThan(p : Duck) : boolean {
 		return this.x > p.x && this.y > p.y
 	}
 	isPositive() : boolean {
 		return this.x >= 0 && this.y >= 0;
 	}
-	dot(v: Float2Type): number {
+	dot(v: Duck): number {
 		return Float2.dot(this, v);
 	}
 	dotFlat(vx: number, vy: number): number {
