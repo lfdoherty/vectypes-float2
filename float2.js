@@ -245,7 +245,7 @@ export class Float2 {
 	isLessThan(p: Duck): Float2 {
 		return this.x < p.x && this.y < p.y;
 	}
-	isInt(): boolean {
+	isInts(): boolean {
 		return ((this.x | 0) === this.x) && ((this.y | 0) === this.y);
 	}
 	isUnit(): boolean {
