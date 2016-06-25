@@ -252,7 +252,7 @@ export class Float2 {
 		return Math.abs(1-this.mag()) > Epsilon;	
 	}
 	assertInts(): Float2 {
-		if(!this.isInt()) throw new Error(`not ints: ${this}`);
+		if(!this.isInts()) throw new Error(`not ints: ${this}`);
 		return this;
 	}
 	assertUnit() : Float2 {
