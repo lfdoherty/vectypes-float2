@@ -11,7 +11,6 @@ function assertNumber(n) : number {
 const Epsilon = Number.EPSILON
 
 export interface Duck {x: number, y: number}
-
 export const T = Float2;
 
 export function one(): Float2 {
@@ -95,19 +94,19 @@ export class Float2 {
 		return (Math.abs(v.x - this.x) < Epsilon) && (Math.abs(v.y - this.y) < Epsilon);
 	}
 	copy(): Float2 {
-		return Float2.vec(this.x, this.y)
+		return vec(this.x, this.y)
 	}
 	mag(): number {
-		return Float2.mag(this)
+		return mag(this)
 	}
 	magSquared(): number {
 		return (this.x * this.x) + (this.y * this.y);
 	}
 	distance(p: Duck): number {
-		return Float2.distance(this, p)
+		return distance(this, p)
 	}
 	distanceSquared(p: Duck) : number {
-		return Float2.distanceSquared(this, p)
+		return distanceSquared(this, p)
 	}
 	distanceFlat(x: number, y: number): number {
 		const dx = this.x - x, dy = this.y - y;
@@ -266,10 +265,10 @@ export class Float2 {
 		return this.x >= 0 && this.y >= 0;
 	}
 	dot(v: Duck): number {
-		return Float2.dot(this, v);
+		return dot(this, v);
 	}
 	dotFlat(vx: number, vy: number): number {
-		return Float2.dotFlat(this.x, this.y, vx, vy);
+		return dotFlat(this.x, this.y, vx, vy);
 	}
 }
 
