@@ -22,6 +22,9 @@ export function zero(): Float2 {
 export function as(json: Duck) : Float2 {
 	return fromJson(json)
 }
+export function copy(json: Duck) : Float2 {
+	return fromJson(json)
+}
 export function is(json: Duck) : boolean {
 	return isNumber(json.x) && isNumber(json.y)
 }
